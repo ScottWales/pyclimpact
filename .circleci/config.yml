@@ -4,7 +4,7 @@ jobs:
         docker:
             - image: continuumio/miniconda3
         environment:
-            TEST_OUTPUT: ~/artifacts
+            TEST_OUTPUT: /tmp/artifacts
         steps:
             - checkout
             - run: conda install conda-build conda-verify codecov black
@@ -23,6 +23,6 @@ jobs:
                     codecov -f ${TEST_OUTPUT}/cov/coverage.xml
                 when: always
             - store_artifacts:
-                path: ~/artifacts
+                path: /tmp/artifacts
             - store_test_results:
-                path: ~/artifacts/pytest
+                path: /tmp/artifacts/pytest
