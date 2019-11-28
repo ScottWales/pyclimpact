@@ -22,7 +22,13 @@ requirements:
 test:
     requires:
         - pytest
+        - pytest-cov
     files:
         - test
+        - src
     imports:
         - pyclimdex
+    script_env:
+        - TEST_OUTPUT
+    commands:
+        - py.test --cov=src --junit-xml=${TEST_OUTPUT:-.}/pytest/junit.xml --cov-report=xml:${TEST_OUTPUT:-.}/cov/coverage.xml

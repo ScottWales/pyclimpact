@@ -3,7 +3,16 @@ jobs:
     build:
         docker:
             - image: continuumio/miniconda3
+        environment:
+            TEST_OUTPUT: ~/artifacts
         steps:
             - checkout
-            - run: conda install conda-build conda-verify
-            - run: conda build .
+            - run: conda install conda-build conda-verify codecov
+            - run: |
+                mkdir -p ${TEST_OUTPUT}/{pytest,cov}
+                conda build .
+            - run: codecov -f ~/artifacts/cov/coverage.xml
+            - store_artifacts:
+                path: ~/artifacts
+            - store_test_reports:
+                path: ~/artifacts/pytest
