@@ -7,14 +7,18 @@ jobs:
             TEST_OUTPUT: ~/artifacts
         steps:
             - checkout
-            - run: conda install conda-build conda-verify codecov
+            - run: conda install conda-build conda-verify codecov black
             - run: |
                 mkdir -p ${TEST_OUTPUT}
                 conda build .
+            - run:
+                name: Checking if 'black' needs to be run
+                command: black --check .
+                when: always
             - run: 
-                  name: Upload codecov
-                  command: codecov -f ${TEST_OUTPUT}/cov/coverage.xml
-                  when: always
+                name: Upload codecov
+                command: codecov -f ${TEST_OUTPUT}/cov/coverage.xml
+                when: always
             - store_artifacts:
                 path: ~/artifacts
             - store_test_results:
