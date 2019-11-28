@@ -11,7 +11,10 @@ jobs:
             - run: |
                 mkdir -p ${TEST_OUTPUT}
                 conda build .
-            - run: codecov -f ${TEST_OUTPUT}/cov/coverage.xml
+            - run: 
+                  name: Upload codecov
+                  command: codecov -f ${TEST_OUTPUT}/cov/coverage.xml
+                  when: always
             - store_artifacts:
                 path: ~/artifacts
             - store_test_results:
