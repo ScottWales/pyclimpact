@@ -1,0 +1,10 @@
+name: pyclimdex
+
+channels:
+    - conda-forge
+    - defaults
+
+dependencies:
+    - python
+    - pytest
+    - sphinx
