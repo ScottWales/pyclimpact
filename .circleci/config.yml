@@ -13,14 +13,11 @@ jobs:
                 conda build .
             - run:
                 name: Checking if 'black' needs to be run
-                command: black --check .
+                command: black --check --diff .
                 when: always
             - run: 
                 name: Upload codecov
-                command: |
-                    find ${TEST_OUTPUT}
-                    cat ${TEST_OUTPUT}/cov/coverage.xml
-                    codecov -f ${TEST_OUTPUT}/cov/coverage.xml
+                command: codecov -f ${TEST_OUTPUT}/cov/coverage.xml
                 when: always
             - store_artifacts:
                 path: /tmp/artifacts
