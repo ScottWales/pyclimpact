@@ -17,7 +17,10 @@ jobs:
                 when: always
             - run: 
                 name: Upload codecov
-                command: codecov -f ${TEST_OUTPUT}/cov/coverage.xml
+                command: |
+                    find ${TEST_OUTPUT}
+                    cat ${TEST_OUTPUT}/cov/coverage.xml
+                    codecov -f ${TEST_OUTPUT}/cov/coverage.xml
                 when: always
             - store_artifacts:
                 path: ~/artifacts
