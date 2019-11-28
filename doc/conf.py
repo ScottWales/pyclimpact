@@ -131,7 +131,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, "pyclimdex.tex", "pyclimdex Documentation", "Scott Wales", "manual"),
+    (master_doc, "pyclimdex.tex", "pyclimdex Documentation", "Scott Wales", "manual")
 ]
 
 
@@ -156,7 +156,7 @@ texinfo_documents = [
         "pyclimdex",
         "One line description of project.",
         "Miscellaneous",
-    ),
+    )
 ]
 
 
