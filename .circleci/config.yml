@@ -9,9 +9,9 @@ jobs:
             - checkout
             - run: conda install conda-build conda-verify codecov
             - run: |
-                mkdir -p ${TEST_OUTPUT}/{pytest,cov}
+                mkdir -p ${TEST_OUTPUT}
                 conda build .
-            - run: codecov -f ~/artifacts/cov/coverage.xml
+            - run: codecov -f ${TEST_OUTPUT}/cov/coverage.xml
             - store_artifacts:
                 path: ~/artifacts
             - store_test_results:
