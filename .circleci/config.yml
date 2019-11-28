@@ -14,5 +14,5 @@ jobs:
             - run: codecov -f ~/artifacts/cov/coverage.xml
             - store_artifacts:
                 path: ~/artifacts
-            - store_test_reports:
+            - store_test_results:
                 path: ~/artifacts/pytest
