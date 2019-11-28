@@ -1,0 +1,28 @@
+{% set data = load_setup_py_data() %}
+
+package:
+    name: pyclimdex
+    version: {{ data.get('version') }}
+
+source:
+    path: .
+
+build:
+    script: "{{ PYTHON }} -m pip install . --no-deps"
+    noarch: python
+    number: {{ GIT_DESCRIBE_NUMBER }}
+
+requirements:
+    host:
+        - python
+        - pip
+    run:
+        - python >=3.6
+
+test:
+    requires:
+        - pytest
+    files:
+        - test
+    imports:
+        - pyclimdex
