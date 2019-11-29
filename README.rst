@@ -12,3 +12,9 @@ pyclimpact
 .. image:: https://img.shields.io/conda/v/ScottWales/pyclimdex
    :target: https://anaconda.org/ScottWales/pyclimdex
    :alt: Conda
+
+Python implementation of the R Climpact library for calculating climate indices
+
+http://etccdi.pacificclimate.org/list_27_indices.shtml
+
+https://github.com/pacificclimate/climdex.pcic
