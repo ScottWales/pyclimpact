@@ -18,6 +18,9 @@ requirements:
         - pip
     run:
         - python >=3.6
+        - xarray
+        - pandas
+        - dask
 
 test:
     requires:

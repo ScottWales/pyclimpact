@@ -7,4 +7,4 @@ cd <- climdexInput.csv(
     data.columns = list(tmin="MIN_TEMP", tmax="MAX_TEMP", prec="ONE_DAY_PRECIPITATION"),
     )
 
-write.table(climdex.fd(cd), 'indices/fd.csv')
+write.csv(climdex.fd(cd), 'indices/fd.csv')

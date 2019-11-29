@@ -20,7 +20,7 @@ def count_days_in_year_where(condition):
     year where it is true 
     """
 
-    return condition.groupby('time.year').count()
+    return condition.where(condition).groupby('time.year').count()
 
 
 def monthly_maximum(dataset):

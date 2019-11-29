@@ -14,11 +14,37 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import pandas
+import xarray
+from .utils import *
 
-def climdex(tmin=None, tmax=None, tmean=None):
+
+def _normalize_input(data):
+    if data is None:
+        return data
+
+    if isinstance(data, xarray.DataArray):
+        return data
+
+    if isinstance(data, pandas.Series):
+        da = data.to_xarray()
+        return da
+
+    if isinstance(data, pandas.DataFrame):
+        raise TypeError(f"Please provide a pandas.Series or xarray.DataArray instead of {type(data)}")
+
+    raise NotImplementedError
+
+
+def climdex(tmin=None, tmax=None, tmean=None, precip=None):
     """
     Calculate all climdex indices
     """
+
+    tmin = _normalize_input(tmin)
+    tmax = _normalize_input(tmax)
+    tmean = _normalize_input(tmean)
+    precip = _normalize_input(precip)
 
     # Derive tmean if not given
     if tmean is None and (tmin is not None and tmax is not None):
